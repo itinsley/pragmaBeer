@@ -6,7 +6,7 @@ namespace PragmaBeer
 {
     public class ContainerType
     {
-        public ContainerType(int id, decimal tempMin, decimal tempMax, string description)
+        public ContainerType(int id, double tempMin, double tempMax, string description)
         {
             Id = id;
             TempMin = tempMin;
@@ -14,9 +14,9 @@ namespace PragmaBeer
             Description = description;
         }
 
-        int Id { get; }
-        decimal TempMin { get; }
-        decimal TempMax { get; }
-        string Description { get; }
+        public int Id { get; }
+        public double TempMin { get; }
+        public double TempMax { get; }
+        public string Description { get; }
     }
 }

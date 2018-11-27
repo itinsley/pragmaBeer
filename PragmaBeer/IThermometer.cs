@@ -6,7 +6,7 @@ namespace PragmaBeer
 {
     public interface IThermometer
     {
-        int Id { get; set; }
-        decimal Temperature { get; set; }
+        int Id { get;  }
+        double Temperature { get;  }
     }
 }
