@@ -9,13 +9,13 @@ namespace PragmaBeerTest
     {
 
         private double _temperature;
-        public StubThermometer(int id, double temperature)
+        public StubThermometer(string guid, double temperature)
         {
-            Id = id;
+            Guid = guid;
             _temperature = temperature;
         }
 
-        public int Id { get; }
+        public string Guid { get; }
         public double Temperature() { return _temperature; }
     }
 }

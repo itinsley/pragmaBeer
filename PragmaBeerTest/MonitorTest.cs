@@ -10,7 +10,7 @@ namespace PragmaBeerTest
         public void CorrectTempReading()
         {
             ContainerType Pilsner = new ContainerType(1, 4, 6, "Pilsner");
-            IThermometer thermometer = new StubThermometer(1, 4.1);
+            IThermometer thermometer = new StubThermometer("therm1", 4.1);
             Monitor monitor = new Monitor(thermometer, Pilsner);
             TemperatureReading reading = monitor.Check();
             Assert.Equal(thermometer.Temperature(), reading.Temperature);
@@ -20,7 +20,7 @@ namespace PragmaBeerTest
         public void GoodTemp()
         {
             ContainerType Pilsner = new ContainerType(1, 4, 6, "Pilsner");
-            IThermometer thermometer = new StubThermometer(1, 4.1);
+            IThermometer thermometer = new StubThermometer("therm1", 4.1);
             Monitor monitor = new Monitor(thermometer, Pilsner);
             TemperatureReading reading = monitor.Check();
             Assert.Equal(thermometer.Temperature(), reading.Temperature);
@@ -30,7 +30,7 @@ namespace PragmaBeerTest
         public void FailingTemp_Over()
         {
             ContainerType Pilsner = new ContainerType(1, 4, 6, "Pilsner");
-            IThermometer thermometer = new StubThermometer(1, 6.01);
+            IThermometer thermometer = new StubThermometer("therm1", 6.01);
             Monitor monitor = new Monitor(thermometer, Pilsner);
             TemperatureReading reading = monitor.Check();
             Assert.Equal(TemperatureStatus.Over, reading.Status);
@@ -39,7 +39,7 @@ namespace PragmaBeerTest
         public void FailingTemp_Under()
         {
             ContainerType Pilsner = new ContainerType(1, 4, 6, "Pilsner");
-            IThermometer thermometer = new StubThermometer(1, 3.99);
+            IThermometer thermometer = new StubThermometer("therm1", 3.99);
             Monitor monitor = new Monitor(thermometer, Pilsner);
             TemperatureReading reading = monitor.Check();
             Assert.Equal(TemperatureStatus.Under, reading.Status);

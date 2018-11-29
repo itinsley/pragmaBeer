@@ -15,7 +15,7 @@ namespace PragmaBeerTest
             //This is a harness for testing the testingThermometer!
             string expected = "4,4,4.1,4,3.9";
 
-            IThermometer thermometer = new TestingThermometer(1001);
+            IThermometer thermometer = new TestingThermometer("therm1");
             List<double> temperatures = new List<double>();
             for (int i = 0; i < 5; i++)
             {

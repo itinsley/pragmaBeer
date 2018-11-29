@@ -12,16 +12,16 @@ namespace PragmaBeer.TestUtilities
         Queue<double> temperatures = new Queue<double>();
         string temperatureData = "4,4,4.1,4,3.9";
 
-        public TestingThermometer(int id)
+        public TestingThermometer(String guid)
         {
-            Id = id; //Change to guid
+            Guid = guid; //Change to guid
             string[] temperaturesArray = temperatureData.Split(",");
             for(int i=0; i<temperaturesArray.Length;i++ ) {
                 temperatures.Enqueue(Convert.ToDouble(temperaturesArray[i]));
             }
         }
 
-        public int Id { get; }
+        public string Guid { get; }
         public double Temperature() {
             return temperatures.Dequeue();
         }

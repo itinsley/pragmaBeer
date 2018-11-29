@@ -13,8 +13,8 @@ namespace MonitorConsole
         {
             Console.WriteLine("Hit enter to exit");
             ContainerType Pilsner = new ContainerType(1, 4, 6, "Pilsner");
-            IThermometer thermometer1001 = new TestingThermometer(1001);
-            Monitor monitorPilsner = new Monitor(thermometer1001, Pilsner);
+            IThermometer thermometerPragma1 = new TestingThermometer("Pragma1");
+            Monitor monitorPilsner = new Monitor(thermometerPragma1, Pilsner);
             List<Monitor> monitors = new List<Monitor>();
             monitors.Add(monitorPilsner);
 
