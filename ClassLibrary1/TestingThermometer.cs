@@ -10,7 +10,7 @@ namespace PragmaBeer.TestUtilities
     public class TestingThermometer: IThermometer
     {
         Queue<double> temperatures = new Queue<double>();
-        string temperatureData = "4,4,4.1,4,3.9";
+        string temperatureData = "4,4,4.1,4,3.9,3.91,4,4.5";
 
         public TestingThermometer(String guid)
         {

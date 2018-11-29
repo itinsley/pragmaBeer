@@ -22,5 +22,12 @@ namespace PragmaBeer
         public double Temperature { get; }
         public TemperatureStatus Status {get; }
         public ContainerType ContainerType { get; }
+
+        public string Description() {
+            return string.Format(" - {0} - Temp: {1} - status: {2}", 
+                ContainerType.Description,
+                Temperature, 
+                Status);
+        }
     }
 }

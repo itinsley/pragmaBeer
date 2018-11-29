@@ -30,8 +30,10 @@ namespace MonitorConsole
         {
             TemperatureReadingEventArgs args = (TemperatureReadingEventArgs)e;
             TemperatureReading reading = args.Reading;
-            Console.WriteLine(" - {0} - Temp: {1} - status: {2}", reading.ContainerType.Description,
-                reading.Temperature, reading.Status);
+            Console.WriteLine(reading.Description());
+            if (reading.Status != TemperatureStatus.Good) {
+                Console.WriteLine("******WARNING******");
+            }
         }
 
 
