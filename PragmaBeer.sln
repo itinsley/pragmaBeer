@@ -9,6 +9,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PragmaBeerTest", "PragmaBee
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestUtilities", "ClassLibrary1\TestUtilities.csproj", "{8F22989D-5532-4153-9BB2-D1A135A56F6E}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MonitorConsole", "MonitorConsole\MonitorConsole.csproj", "{AEDD36AA-1756-4E0B-BD2C-ED9C9F6B6986}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{8F22989D-5532-4153-9BB2-D1A135A56F6E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8F22989D-5532-4153-9BB2-D1A135A56F6E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8F22989D-5532-4153-9BB2-D1A135A56F6E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AEDD36AA-1756-4E0B-BD2C-ED9C9F6B6986}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AEDD36AA-1756-4E0B-BD2C-ED9C9F6B6986}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AEDD36AA-1756-4E0B-BD2C-ED9C9F6B6986}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AEDD36AA-1756-4E0B-BD2C-ED9C9F6B6986}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
