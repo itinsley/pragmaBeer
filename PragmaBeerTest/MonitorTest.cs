@@ -7,13 +7,13 @@ namespace PragmaBeerTest
     public class MonitorTest
     {
         [Fact]
-        public void CorrectTemp()
+        public void CorrectTempReading()
         {
             ContainerType Pilsner = new ContainerType(1, 4, 6, "Pilsner");
             IThermometer thermometer = new StubThermometer(1, 4.1);
             Monitor monitor = new Monitor(thermometer, Pilsner);
             TemperatureReading reading = monitor.Check();
-            Assert.Equal(thermometer.Temperature, reading.Temperature);
+            Assert.Equal(thermometer.Temperature(), reading.Temperature);
         }
 
         [Fact]
@@ -23,7 +23,7 @@ namespace PragmaBeerTest
             IThermometer thermometer = new StubThermometer(1, 4.1);
             Monitor monitor = new Monitor(thermometer, Pilsner);
             TemperatureReading reading = monitor.Check();
-            Assert.Equal(thermometer.Temperature, reading.Temperature);
+            Assert.Equal(thermometer.Temperature(), reading.Temperature);
             Assert.Equal(TemperatureStatus.Good, reading.Status);
         }
         [Fact]
@@ -44,17 +44,5 @@ namespace PragmaBeerTest
             TemperatureReading reading = monitor.Check();
             Assert.Equal(TemperatureStatus.Under, reading.Status);
         }
-    }
-
-    public class StubThermometer : IThermometer
-    {
-        public StubThermometer(int id, double temperature)
-        {
-            Id = id;
-            Temperature = temperature;
-        }
-
-        public int Id { get;}
-        public double Temperature { get; }
     }
 }

@@ -7,6 +7,6 @@ namespace PragmaBeer
     public interface IThermometer
     {
         int Id { get;  }
-        double Temperature { get;  }
+        double Temperature();
     }
 }

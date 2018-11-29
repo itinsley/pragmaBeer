@@ -15,15 +15,15 @@ namespace PragmaBeer
 
         public TemperatureReading Check() {
             TemperatureStatus temperatureStatus;
-            if (_thermometer.Temperature > _containerType.TempMax) {
+            if (_thermometer.Temperature() > _containerType.TempMax) {
                 temperatureStatus = TemperatureStatus.Over;
-            } else if (_thermometer.Temperature < _containerType.TempMin) {
+            } else if (_thermometer.Temperature() < _containerType.TempMin) {
                 temperatureStatus = TemperatureStatus.Under;
             } else {
                 temperatureStatus = TemperatureStatus.Good;
             }
 
-            TemperatureReading temperatureReading = new TemperatureReading(_thermometer.Temperature, temperatureStatus);
+            TemperatureReading temperatureReading = new TemperatureReading(_thermometer.Temperature(), temperatureStatus);
             return temperatureReading;
         }
     }
