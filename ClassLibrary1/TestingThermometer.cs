@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using PragmaBeer;
 
-namespace PragmaBeerTest
+namespace PragmaBeer.TestUtilities
 {
     //Designed for integration testing. It will provide a sequence of static readings
     //Once all readings have been read it will throw an exception

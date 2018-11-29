@@ -1,15 +1,22 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Threading;
-using System.Diagnostics;
 
 namespace PragmaBeer
 {
+    public class TemperatureReadingEventArgs : EventArgs
+    {
+        public TemperatureReading Reading { get; set; }
+    }
 
     public class MonitorSchedule
     {
         public int WaitInSeconds { get; }
         public List<Monitor>  Monitors {get;}
+
+        public ISynchronizeInvoke EventSyncInvoke { get; set; }
+        public event EventHandler MonitorReadEvent;
 
         public MonitorSchedule(int waitInSeconds, List<Monitor> monitors )
         {
@@ -20,10 +27,14 @@ namespace PragmaBeer
             foreach (Monitor monitor in Monitors) {
                 try {
                     TemperatureReading reading = monitor.Check();
-                    Console.WriteLine(" - {0} - Temp: {1} - status: {2}", reading.ContainerType.Description,
-                        reading.Temperature, reading.Status);
+                    TemperatureReadingEventArgs eventArgs = new TemperatureReadingEventArgs();
+                    eventArgs.Reading = reading;
+                    RaiseMonitorReadEvent(eventArgs);
                 }
-                catch(Exception e){
+                catch (Exception e){
+                    //This is not ideal. Should raise separate event that something failed
+                    //Don't want to let unhandled exception occur as some level of fail tolerance is required
+                    //Beyond the scope of this work.
                     Console.WriteLine("Unhandled exception occurred. Will continue monitoring. Details {0}", 
                         e.Message);
                 }
@@ -33,6 +44,22 @@ namespace PragmaBeer
             Console.WriteLine("{0:h:mm:ss.fff} Creating timer.\n", DateTime.Now);
             var stateTimer = new Timer(CheckMonitors,null, 0, Wait());
         }
+
+        private void RaiseMonitorReadEvent(EventArgs e)
+        {
+            // Take a local copy -- this is for thread safety.
+            EventHandler monitorReadEvent = this.MonitorReadEvent;
+
+            // Check for no subscribers
+            if (monitorReadEvent == null)
+                return;
+
+            if (EventSyncInvoke == null)
+                monitorReadEvent(this, e);
+            else
+                EventSyncInvoke.Invoke(monitorReadEvent, new object[] { this, e });
+        }
+
 
         public int Wait() {
             return WaitInSeconds * 1000;

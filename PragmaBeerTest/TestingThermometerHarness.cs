@@ -2,7 +2,7 @@
 using Xunit;
 using PragmaBeer;
 using System.Collections.Generic;
-using System.Diagnostics;
+using PragmaBeer.TestUtilities;
 
 
 namespace PragmaBeerTest
