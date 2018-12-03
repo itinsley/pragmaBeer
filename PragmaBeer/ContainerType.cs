@@ -6,6 +6,12 @@ namespace PragmaBeer
 {
     public class ContainerType
     {
+        public ContainerType(ContainerTypeConfig containerTypeConfig) : this(containerTypeConfig.Id,
+                containerTypeConfig.TempMin,
+                containerTypeConfig.TempMax,
+                containerTypeConfig.Description
+                ){ }
+               
         public ContainerType(int id, double tempMin, double tempMax, string description)
         {
             Id = id;
